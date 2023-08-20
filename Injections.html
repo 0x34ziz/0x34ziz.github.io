@@ -100,15 +100,15 @@
 </div>
 
 	<!--Container-->
-	<div class="container max-w-6xl mx-auto -mt-32">
+	<div  class="container max-w-9xl mx-auto -mt-32">
 		<div class="mx-0 sm:mx-6">
-			<div class="bg-white w-full p-8 md:p-24 text-xl md:text-2xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
+			<div style="font-size: 1.4em;font-family: 'Times New Roman', serif;" class="bg-white w-full p-8 md:p-24 text-xl md:text-2xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
 				<!--Post Content-->
 				
 
 				<!--Lead Para-->
 				<p class="text-2xl md:text-3xl mb-5">
-					SQL Injection: The Silent Threat
+					<strong>SQL Injection: The Silent Threat</strong>
 					<!-- <a class="text-gray-800 hover:text-red-700 no-underline border-b-2 border-red-700" href="HYPERLINK">HYPER LINKS</a> -->
 				</p>
 
@@ -131,44 +131,41 @@
 	
 			
 					<p class="py-6">
-						We all know that SQL injection is a huge deal in the cybersecurity world, and we've all seen our pals racking up those bounties like champs( ͡≖ ͜ʖ ͡≖) – 
-						no jealousy here, just respect! But why is it so critical? Well, 
+						We all know that SQL injection is a huge deal in the cybersecurity world, and we've all seen our pals racking up those bounties like champs<br>( ͡≖ ͜ʖ ͡≖) – 
+						no jealousy here, just respect! But why is it so critical, Is it all about Database Enumeration? Well, 
 						let's take a whirlwind tour through its potential, shall we?
 					</p>
+					
+				
 					<hr>
 					<p class="py-6">
-						1- First things first, we all know about Database Enumeration – it's a pretty 
-						common effect of SQL injection. But for now, let's put that on the back burner.
-					</p>
-					<hr>
-					<p class="py-6">
-						2- Now, let's talk about <strong>READING FILES</strong>:<br>You might have a sense of this from our Database Enumeration, 
+						<strong>READING FILES:</strong><br>You might have a sense of this from Database Enumeration, 
 						but the real deal here is <span style="text-decoration: underline">using the privileges of the DB User to snoop around in the system's files</span>. 
-						<br>And guess what?<br>This could potentially lead to <strong>system exploitation</strong>. Exciting, right?<br>Take MySQL, for instance. 
+						<br>And guess what?<br>This could potentially lead to <span style="color:#cd0000;">system exploitation</span>. Exciting, right?<br>Take MySQL, for instance. 
 						If the DB user has the mighty <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">FILE</code>
-						privilege, it's like holding the keys to the kingdom.<br> You can <strong>load the contents of a file into a table and then swipe that data 
-						 from the table to read files </strong>( ͡◡ ͜ʖ ͡◡).Just imagine, you can use <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">LOAD_FILE('/PATH')</code> 
+						privilege, it's like holding the keys to the kingdom.<br> You can <span style="color:#cd0000;">load the contents of a file into a table and then swipe that data 
+						 from the table to read files </span>( ͡◡ ͜ʖ ͡◡). Just imagine, you can use <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">LOAD_FILE('/PATH')</code> 
 						 to load up any juicy files you can get 
-						 your hands on.<br> Or brace yourself, because it gets even wilder – you can even load up the <strong>source code</strong> of the backend server!<br> For
+						 your hands on. Or brace yourself, because it gets even wilder – you can even load up the <span style="color:#cd0000;">source code</span> of the backend server!<br> For
 						  instance,  <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">LOAD_FILE("/var/www/html/search.php")</code> could give you a peek behind the curtains.
 					</p>
 					<hr>
 					<p class="py-6">
-						3- Last but Not Least <strong>WRITING FILES</strong>:<br>
+						<strong>WRITING FILES:</strong><br>
 
 					Absolutely, you can leverage SQL injection to take things up a notch and actually write files to the system. 
-					This includes the possibility of creating <strong>web shells that could potentially lead to Remote Code Execution 
-					(RCE)</strong> within the system.<br>To achieve this, <span style="text-decoration: underline">there are three key prerequisites</span>:<br>
+					This includes the possibility of creating <span style="text-decoration: underline ; color: #cd0000;">web shells that could potentially lead to Remote Code Execution 
+					(RCE)</span> within the system.<br>To achieve this, <span style="text-decoration: underline">there are three key prerequisites</span>:<br>
 					<p style="padding: 25px">
-						<strong>a. User with <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">FILE</code> Privilege:</strong><br>As mentioned earlier, having a user with the <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">FILE</code> privilege is crucial. This privilege opens up the door for file-related operations.
-					<br><br><strong>b. Unrestricted <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">secure_file_priv</code>:</strong> <br>Here comes the kicker – the MySQL global <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">secure_file_priv</code>
+						<strong>1. User with <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">FILE</code> Privilege:</strong><br>As mentioned earlier, having a user with the <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">FILE</code> privilege is crucial. This privilege opens up the door for file-related operations.
+					<br><br><strong>2. Unrestricted <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">secure_file_priv</code>:</strong> <br>Here comes the kicker – the MySQL global <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">secure_file_priv</code>
 					variable needs to be unchecked. For instance, you could run a query like:<br>
 					<code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
-						style="font-size: 12px;">blabla' UNION SELECT 1, variable_name, variable_value, 4 FROM information_schema.global_variables where variable_name="secure_file_priv"-- -</code>. 
+						style="font-size: 14px;">blabla' UNION SELECT 1, variable_name, variable_value, 4 FROM information_schema.global_variables where variable_name="secure_file_priv"-- -</code>. 
 					<br>If this query shows an empty <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">secure_file_priv</code> value, it's a signal that you've got the green light to read and write files wherever you fancy (◡̀ ͜ʖ ́◡).
-					<br><br><strong>c. Write Access to Desired Location:</strong> <br>Lastly, you'll need the golden key – write access to the specific location on the back-end server where you intend to create or modify files.
+					<br><br><strong>3. Write Access to Desired Location:</strong> <br>Lastly, you'll need the golden key – write access to the specific location on the back-end server where you intend to create or modify files.
 					<br><br></p>
-					Now, does this feel like navigating through a narrow alley with broad limitations?<br> It might seem that way at first glance. <br>But hold on a second! Think about it – imagine the thrill of meeting these three conditions and the vast opportunities that would unlock.
+					Now, does this feel like navigating through a narrow alley with broad limitations? It might seem that way at first glance. <br>But hold on a second! Think about it – imagine the thrill of meeting these three conditions and the vast opportunities that would unlock.
 
 					The excitement doesn't stop there. You can take it even further: directly <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">SELECT</code> strings into files. This means you can write just about
 					any file you can imagine to the back-end server using <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">INTO OUTFILE '/PATH/file'</code>.<br> But wait, there's more – brace yourself for this audacious move. 
@@ -176,7 +173,7 @@
 					This opens up a realm where you can execute system commands on the backend server through the web shell.<br>
 
 					For instance, conjure up something like: <br><code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
-					style="font-size: 12px;">blabla' union select '', '&lt;?php system(COMMAND); ?&gt;', '', '' into outfile '/var/www/html/shell.php'-- -</code>
+					style="font-size: 16px;">blabla' union select '', '&lt;?php system(COMMAND); ?&gt;', '', '' into outfile '/var/www/html/shell.php'-- -</code>
 					.<br>
 
 					And then, like a magician's flourish – BOOM! 🎩💥<br><br><hr><br>
