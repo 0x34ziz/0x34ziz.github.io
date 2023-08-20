@@ -24,7 +24,7 @@
 </head>
 <body class="bg-white font-sans leading-normal tracking-normal">
 
-	<!--Nav--><nav class="mt-0 w-full">
+	<!--Nav--><nav class="mt-0 w-full" style="background-color:#0000000d">
 					<div class="container mx-auto flex items-center">
 						
 						<div class="flex w-1/2 pl-4 text-sm">
@@ -100,12 +100,9 @@
 </div>
 
 	<!--Container-->
-	<div class="container max-w-5xl mx-auto -mt-32">
-		
+	<div class="container max-w-6xl mx-auto -mt-32">
 		<div class="mx-0 sm:mx-6">
-			
 			<div class="bg-white w-full p-8 md:p-24 text-xl md:text-2xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
-				
 				<!--Post Content-->
 				
 
@@ -121,7 +118,7 @@
 					 intriguing realm of injection vulnerabilities? These little troublemakers have 
 					 the potential to take us on quite a ride, making them a key player in OWASP's 
 					 top 10 vulnerabilities. So, let's buckle up and explore the fascinating journey
-					  of injection vulnerabilities together! 🚀 Feel free to chip in.
+					  of injection vulnerabilities together! <br>🚀 Feel free to chip in.
 					 </p>				
 			
 					 <p class="py-6">
@@ -157,35 +154,35 @@
 					</p>
 					<hr>
 					<p class="py-6">
-						3- Last but Not Least: <strong>WRITING FILES</strong>:<br>
+						3- Last but Not Least <strong>WRITING FILES</strong>:<br>
 
 					Absolutely, you can leverage SQL injection to take things up a notch and actually write files to the system. 
 					This includes the possibility of creating <strong>web shells that could potentially lead to Remote Code Execution 
 					(RCE)</strong> within the system.<br>To achieve this, <span style="text-decoration: underline">there are three key prerequisites</span>:<br>
+					<p style="padding: 25px">
+						<strong>a. User with <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">FILE</code> Privilege:</strong><br>As mentioned earlier, having a user with the <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">FILE</code> privilege is crucial. This privilege opens up the door for file-related operations.
+					<br><br><strong>b. Unrestricted <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">secure_file_priv</code>:</strong> <br>Here comes the kicker – the MySQL global <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">secure_file_priv</code>
+					variable needs to be unchecked. For instance, you could run a query like:<br>
+					<code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
+						style="font-size: 12px;">blabla' UNION SELECT 1, variable_name, variable_value, 4 FROM information_schema.global_variables where variable_name="secure_file_priv"-- -</code>. 
+					<br>If this query shows an empty <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">secure_file_priv</code> value, it's a signal that you've got the green light to read and write files wherever you fancy (◡̀ ͜ʖ ́◡).
+					<br><br><strong>c. Write Access to Desired Location:</strong> <br>Lastly, you'll need the golden key – write access to the specific location on the back-end server where you intend to create or modify files.
+					<br><br></p>
+					Now, does this feel like navigating through a narrow alley with broad limitations?<br> It might seem that way at first glance. <br>But hold on a second! Think about it – imagine the thrill of meeting these three conditions and the vast opportunities that would unlock.
 
-1. User with <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">FILE</code> Privilege: <br>As mentioned earlier, having a user with the <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">FILE</code> privilege is crucial. This privilege opens up the door for file-related operations.
-<br>2. Unrestricted <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">secure_file_priv</code>: <br>Here comes the kicker – the MySQL global <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">secure_file_priv</code>
-variable needs to be unchecked. For instance, you could run a query like:<br>
-<code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
-      style="font-size: 12px;">blabla' UNION SELECT 1, variable_name, variable_value, 4 FROM information_schema.global_variables where variable_name="secure_file_priv"-- -</code>. 
-<br>If this query shows an empty <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">secure_file_priv</code> value, it's a signal that you've got the green light to read and write files wherever you fancy (◡̀ ͜ʖ ́◡).
-<br>3. Write Access to Desired Location: <br>Lastly, you'll need the golden key – write access to the specific location on the back-end server where you intend to create or modify files.
-<br><br>
-Now, does this feel like navigating through a narrow alley with broad limitations?<br> It might seem that way at first glance. <br>But hold on a second! Think about it – imagine the thrill of meeting these three conditions and the vast opportunities that would unlock.
+					The excitement doesn't stop there. You can take it even further: directly <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">SELECT</code> strings into files. This means you can write just about
+					any file you can imagine to the back-end server using <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">INTO OUTFILE '/PATH/file'</code>.<br> But wait, there's more – brace yourself for this audacious move. 
+					You can craft a web shell and drop it onto the server, then access it through the web application. 
+					This opens up a realm where you can execute system commands on the backend server through the web shell.<br>
 
-The excitement doesn't stop there. You can take it even further: directly <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">SELECT</code> strings into files. This means you can write just about
- any file you can imagine to the back-end server using <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">INTO OUTFILE '/PATH/file'</code>.<br> But wait, there's more – brace yourself for this audacious move. 
- You can craft a web shell and drop it onto the server, then access it through the web application. 
- This opens up a realm where you can execute system commands on the backend server through the web shell.<br>
+					For instance, conjure up something like: <br><code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
+					style="font-size: 12px;">blabla' union select '', '&lt;?php system(COMMAND); ?&gt;', '', '' into outfile '/var/www/html/shell.php'-- -</code>
+					.<br>
 
-For instance, conjure up something like: <br><code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
-style="font-size: 12px;">blabla' union select '', '&lt;?php system(COMMAND); ?&gt;', '', '' into outfile '/var/www/html/shell.php'-- -</code>
-.<br>
+					And then, like a magician's flourish – BOOM! 🎩💥<br><br><hr><br>
 
-And then, like a magician's flourish – BOOM! 🎩💥<br>
-
-There you have it – the tantalizing potential of SQL injection isn't just about database tricks. <br>It's about painting your digital canvas with creativity, exploration, and impact.<br> 🎨 So keep that fire of curiosity burning, and always remember to navigate this journey ethically and responsibly. 🌟🔒
-					</p>								
+					There you have it – the tantalizing potential of SQL injection isn't just about database tricks. <br>It's about painting your digital canvas with creativity, exploration, and impact.<br> 🎨 So keep that fire of curiosity burning, and always remember to navigate this journey ethically and responsibly. 🌟🔒
+										</p>								
 				<!--/ Post Content-->
 						
 			</div>
