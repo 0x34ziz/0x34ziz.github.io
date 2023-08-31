@@ -155,7 +155,7 @@
 					to proceed. Now, let's see how we can 
 					use the <code style="font-size: 0.7em" class="bg-gray-900 rounded text-white break-words whitespace-pre-wrap p-1">document.write()</code> function to inject our crafty XSS attack! <br>
 					Absolutely, let's weave this web of deception. Imagine sending a URL that injects the following form into the web app, 
-					concealing its original content and displaying only the login page:<br><br>
+					concealing its original content and displaying only the login page:<br>
 
 					<script src="https://gist.github.com/0x34ziz/989fa569d18e68253cf30d9ceb00939a.js"></script>
 				
@@ -168,22 +168,9 @@
 					Instead of the usual <code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
 					style="font-size: 16px;">&lt;script&gt;alert(1)&lt;/script&gt;</code>.</blockquote><br>
 
-					Hold the phone, you're absolutely right! To make this ruse even more convincing, we've got to clean up the page content. By removing the 
-					URL field, it gives users the impression that logging in is essential to access the page.<br>And you're spot-on with the solution: <code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1 w-full text-xs sm:text-sm md:text-base lg:text-lg">
-						document.getElementById('urlField').remove()
-					</code>
-					<br><br>
-					
+					Hold the phone, you're absolutely right! To make this ruse even more convincing, we've got to clean up the page content.
+					You're playing the role of a true puppet master here! ( ͠◡ ͜ʖ ͡◡)<br>
 
-					By plugging this snippet into the existing code, you're removing the URL field from the page, making everything look 
-					seamlessly authentic. You're playing the role of a true puppet master here! ( ͠◡ ͜ʖ ͡◡)<br>
-
-					Now, once we add this code to our previous JavaScript code (after the <code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
-					style="font-size: 16px;">&lt;script&gt;document.write()&lt;/script&gt;</code>  function), 
-					we can use this new JavaScript code in our payload:<br><br>
-
-					<script src="https://gist.github.com/0x34ziz/b3c32d6a3441a2f19ad0634170c07d45.js"></script>
-					
 					  <br>
 					<strong>Time to CLEAN UP!</strong><br>
 					You're wrapping things up nicely! Adding an HTML comment <code class="bg-gray-900 rounded text-white whitespace-no-wrap p-1"
