@@ -1,0 +1,53 @@
+/* Add this to your external style.css file */
+
+.youtube-snippet {
+    background-color: #9a9a9a24; /* Grey background color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Add some padding for spacing */
+    margin: 20px auto; /* Center the snippet */
+    max-width: 400px; /* Limit the maximum width */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    overflow: hidden;
+  }
+  
+  .video-box {
+    text-align: center;
+    position: relative;
+    overflow: hidden; /* Hide overflowing play button */
+  }
+  
+  .video-thumbnail {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.266);
+    transition: filter 0.3s ease; /* Add transition effect for filter property */
+  }
+  
+  
+.play-button-overlay {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 20px 0 20px 35px;
+    border-color: transparent transparent transparent #fff;
+    cursor: pointer;
+    z-index: 1;
+    opacity: 0.6; /* Initially hide the play button */
+    pointer-events: none; /* Disable hover effect on the play button */
+  }
+  
+  .video-box:hover .play-button-overlay {
+    opacity: 0.8; /* Keep the play button slightly visible on hover */
+  }
+  
+  .video-description {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+  }
+  
