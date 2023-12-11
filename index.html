@@ -224,11 +224,19 @@
     </div>
 </footer>
 
-</html>
-
-<script>
+</html><script>
 	function toggleExpanded(postId) {
 		const container = document.getElementById(`blogContainer${postId}`);
+        
+        // Remove 'expanded' class from all other posts in the same row
+        const allContainers = document.querySelectorAll('[id^="blogContainer"]');
+        allContainers.forEach((otherContainer) => {
+            if (otherContainer.id !== `blogContainer${postId}`) {
+                otherContainer.classList.remove('expanded');
+            }
+        });
+
+        // Toggle 'expanded' class for the clicked post
 		container.classList.toggle('expanded');
 	}
 
