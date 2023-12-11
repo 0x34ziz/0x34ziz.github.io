@@ -56,3 +56,17 @@
     margin-top:-73px ;
     margin-bottom: -77px;
   }
+
+
+
+  
+  .hiddenContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.expanded .hiddenContent {
+  max-height: 1000px; /* Adjust this value based on your content height */
+  transition: max-height 0.5s ease-in-out;
+}
