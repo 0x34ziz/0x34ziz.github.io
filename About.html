@@ -38,8 +38,32 @@
   <body class="bg-gray-200 font-sans leading-normal tracking-normal">
     <!--Header-->
     <!-- <div id="cover-image" style="width: 100%; height: 0; padding-bottom: 25%; background-image: url('https://media.tenor.com/7OsREIGl0xQAAAAd/kiyotaka-ayanok%C5%8Dji-anime.gif'); background-size: cover; background-position: center;"></div> -->
-    <img style="display: block;margin: 0 auto;max-width: 20%;height: auto;" src="./images/COver.png" alt="Evil Morty">
-    <div style="display: flex; background-color: #ffffff69;">
+    <style>
+      .image-container {
+          display: block;
+          margin: 0 auto;
+          position: relative;
+      }
+      .image-container::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 70px; /* Adjust height as needed */
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(230, 230, 230));
+      }
+      .image-container img {
+          display: block;
+          width: 100%;
+          height: auto;
+          opacity: 0.2;
+      }
+  </style>
+  
+  <div class="image-container">
+      <img src="./images/COver.png" alt="">
+  </div>     <div style="display: flex; background-color: #ffffff69;">
       <nav class="flex w-1/2 pl-4 text-sm">
         <ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
           <li class="mr-2">
@@ -127,9 +151,9 @@
               <h1>Projects</h1>
               <ul>
                 <li>C2-framework <ul>
-                    <li>• Developed a command-and-control framework to facilitate security engineers in auditing various systems.</li>
-                    <li>• Focused on auditing Active Directory environments, Linux & Windows OS's.</li>
-                    <li>• Was recognized by the faculty as one of the best graduation projects and shared in the CDIS events as one of the presented products</li>
+                    <li>• Developed a command-and-control framework POC.</li>
+                    <li>• With a complete red team scenario for an Active Directory environment, Linux & Windows OS's.</li>
+                    <li>• Was recognized by the faculty as one of the best graduation projects and shared in the CDIS events as one of the presented products.</li>
                   </ul>
                 </li>
               </ul>
